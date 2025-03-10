@@ -4,78 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Registro</title>
-<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <h2>Formulario de Registro</h2>
   <form action="/registro" method="POST">
-    <!-- Nombre 
-        type="text": Define que el input es de tipo texto.
-        id="nombre": Identifica el input de manera única en el documento.
-        name="nombre": Nombre del campo, que se envía con los datos del formulario.
-        placeholder="Ingresa tu nombre": Muestra un texto de ejemplo dentro del input.
-        required: Hace que el campo sea obligatorio.
-    -->
+    
+    <!-- Nombre -->
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
 
-    <!-- Apellido 
-        type="text": Define que el input es de tipo texto.
-        id="apellido": Identifica el input de manera única.
-        name="apellido": Nombre del campo, que se envía con los datos del formulario.
-        placeholder="Ingresa tu apellido": Muestra un texto de ejemplo dentro del input.
-        required: Hace que el campo sea obligatorio. 
-    -->
+    <!-- Apellido -->
     <label for="apellido">Apellido:</label>
     <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required>
 
-    <!-- Correo electrónico
-        type="email": Define que el input es de tipo correo electrónico. Valida automáticamente que el valor sea un correo válido.
-        id="email": Identifica el input de manera única.
-        name="email": Nombre del campo, que se envía con los datos del formulario.
-        placeholder="ejemplo@correo.com": Muestra un texto de ejemplo dentro del input.
-        required: Hace que el campo sea obligatorio.
-    -->
+    <!-- Correo electrónico -->
     <label for="email">Correo electrónico:</label>
     <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
 
-    <!-- Contraseña
-        type="password": Define que el input es de tipo contraseña (el texto se oculta).
-        id="contraseña": Identifica el input de manera única.
-        name="contraseña": Nombre del campo, que se envía con los datos del formulario.
-        placeholder="Ingresa tu contraseña": Muestra un texto de ejemplo dentro del input.
-        minlength="8": Define que la contraseña debe tener al menos 8 caracteres.
-        required: Hace que el campo sea obligatorio.
-     -->
+    <!-- Contraseña -->
     <label for="contraseña">Contraseña:</label>
     <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa tu contraseña" minlength="8" required>
 
-    <!-- Confirmar contraseña 
-    type="password": Define que el input es de tipo contraseña.
-    id="confirmar-contraseña": Identifica el input de manera única.
-    name="confirmar-contraseña": Nombre del campo, que se envía con los datos del formulario.
-    placeholder="Confirma tu contraseña": Muestra un texto de ejemplo dentro del input.
-    minlength="8": Define que la contraseña debe tener al menos 8 caracteres.
-    required: Hace que el campo sea obligatorio.
-    -->
+    <!-- Confirmar contraseña -->
     <label for="confirmar-contraseña">Confirmar contraseña:</label>
     <input type="password" id="confirmar-contraseña" name="confirmar-contraseña" placeholder="Confirma tu contraseña" minlength="8" required>
 
-    <!-- Fecha de nacimiento 
-        type="date": Define que el input es de tipo fecha (permite seleccionar una fecha).
-        id="fecha-nacimiento": Identifica el input de manera única.
-        name="fecha-nacimiento": Nombre del campo, que se envía con los datos del formulario.
-        required: Hace que el campo sea obligatorio.
-    -->
+    <!-- Fecha de nacimiento -->
     <label for="fecha-nacimiento">Fecha de nacimiento:</label>
     <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
 
-    <!-- Género
-        id="genero": Identifica el select de manera única.
-        name="genero": Nombre del campo, que se envía con los datos del formulario.
-        required: Hace que el campo sea obligatorio.
-    -->
+    <!-- Género -->
     <label for="genero">Género:</label>
     <select id="genero" name="genero" required>
       <option value="">Selecciona una opción</option>
@@ -85,69 +45,80 @@
       <option value="prefiero-no-decir">Prefiero no decir</option>
     </select>
 
-    <!-- Teléfono
-        type="tel": Define que el input es de tipo teléfono.
-        id="telefono": Identifica el input de manera única.
-        name="telefono": Nombre del campo, que se envía con los datos del formulario.
-        placeholder="Ej: 1234567890": Muestra un texto de ejemplo dentro del input.
-        pattern="[0-9]{10}": Valida que el valor sean exactamente 10 dígitos.
-        required: Hace que el campo sea obligatorio. 
-    -->
-   
+    <!-- País -->
+    <label for="pais">País:</label>
+    <select id="pais" name="pais" onchange="actualizarPrefijoTelefonico()" required>
+      <option value="">Selecciona un país</option>
+      <option value="EEUU">Estados Unidos</option>
+      <option value="Canada">Canadá</option>
+      <option value="Mexico">México</option>
+      <option value="España">España</option>
+    </select>
 
-    <!-- Comentarios 
-        id="comentarios": Identifica el textarea de manera única.
-        name="comentarios": Nombre del campo, que se envía con los datos del formulario.
-        placeholder="Escribe tus comentarios aquí": Muestra un texto de ejemplo dentro del textarea.
-        rows="4": Define el número de filas visibles del textarea. 
-    -->
+    <!-- Teléfono con prefijo dinámico -->
+    <label for="telefono">Teléfono:</label>
+    <div class="telefono-container">
+      <input type="text" id="prefijo" name="prefijo" placeholder="Prefijo" readonly>
+      <input type="text" id="telefono" name="telefono" placeholder="Número de teléfono" required>
+    </div>
 
-     <!-- País -->
-     <label for="pais">País:</label>
-     <select id="pais" name="pais" onchange="actualizarPrefijoTelefonico()" required>
-       <option value="">Selecciona un país</option>
-       <option value="EEUU">Estados Unidos</option>
-       <option value="Canada">Canadá</option>
-       <option value="Mexico">México</option>
-       <option value="España">España</option>
-     </select>
- 
-     <!-- Teléfono con prefijo dinámico -->
-     <label for="telefono">Teléfono:</label>
-     <div class="telefono-container">
-       <input type="text" id="prefijo" name="prefijo" placeholder="Prefijo" readonly>
-       <input type="text" id="telefono" name="telefono" placeholder="Número de teléfono" required>
-     </div>
- 
-     <!-- Dirección (inicialmente oculta) -->
-     <div id="direccionDiv">
-       <label for="direccion">Dirección:</label>
-       <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección">
-     </div>
+    <!-- Dirección (inicialmente oculta) -->
+    <div id="direccionDiv" style="display: none;">
+      <label for="direccion">Dirección:</label>
+      <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección">
+    </div>
 
-
+    <!-- Comentarios -->
     <label for="comentarios">Comentarios:</label>
     <textarea id="comentarios" name="comentarios" placeholder="Escribe tus comentarios aquí" rows="4"></textarea>
 
-    <!-- Términos y condiciones
-        type="checkbox": Define que el input es de tipo casilla de verificación.
-        id="terminos": Identifica el input de manera única.
-        name="terminos": Nombre del campo, que se envía con los datos del formulario.
-        required: Hace que el campo sea obligatorio. 
-    -->
+    <!-- Términos y condiciones -->
     <label for="terminos">
       <input type="checkbox" id="terminos" name="terminos" required> Acepto los <a href="#">términos y condiciones</a>
     </label>
 
-    <!-- Botón de envío 
-        type="submit": Define que el input es un botón para enviar el formulario.
-        value="Registrarse": Define el texto que aparece en el botón.
-    -->
+    <!-- Botón de envío -->
     <input type="submit" value="Registrarse">
   </form>
-   
 
+  <script>
+    // Función para mostrar u ocultar el campo de dirección
+    function mostrarOcultarDireccion() {
+        let pais = document.getElementById("pais").value;
+        let direccionDiv = document.getElementById("direccionDiv");
 
-  <script src="scripts.js"></script>
+        if (pais === "EEUU" || pais === "Canada") {
+            direccionDiv.style.display = "block"; // Muestra el campo de dirección
+        } else {
+            direccionDiv.style.display = "none"; // Oculta el campo de dirección
+        }
+    }
+
+    // Función para actualizar el prefijo telefónico según el país seleccionado
+    function actualizarPrefijoTelefonico() {
+        let pais = document.getElementById("pais").value;
+        let prefijoInput = document.getElementById("prefijo");
+
+        // Asignar el prefijo según el país
+        switch (pais) {
+            case "EEUU":
+            case "Canada":
+                prefijoInput.value = "+1";
+                break;
+            case "Mexico":
+                prefijoInput.value = "+52";
+                break;
+            case "España":
+                prefijoInput.value = "+34";
+                break;
+            default:
+                prefijoInput.value = "";
+        }
+
+        // Mostrar u ocultar el campo de dirección
+        mostrarOcultarDireccion();
+    }
+  </script>
+
 </body>
 </html>
