@@ -10,20 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
     let direccionDiv = document.getElementById("direccionDiv");
     let formulario = document.querySelector("form");
 
-    // Función para mostrar u ocultar el campo de dirección
-    function mostrarOcultarDireccion() {
+    
+    // Función para actualizar el prefijo telefónico según el país seleccionado
+    function actualizarPrefijoTelefonico() {
         let pais = paisSelect.value;
 
+        //Mostrar y ocultar campo de dirección dependiendo del país
         if (pais === "EEUU" || pais === "Canada") {
             direccionDiv.style.display = "block"; // Muestra el campo de dirección
         } else {
             direccionDiv.style.display = "none"; // Oculta el campo de dirección
         }
-    }
-
-    // Función para actualizar el prefijo telefónico según el país seleccionado
-    function actualizarPrefijoTelefonico() {
-        let pais = paisSelect.value;
 
         // Asignar el prefijo según el país
         switch (pais) {
@@ -41,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 prefijoInput.value = "";
         }
 
-        mostrarOcultarDireccion();
+        // Mostrar u ocultar el campo de dirección
     }
 
     // Evento para cambiar el prefijo cuando se selecciona un país
