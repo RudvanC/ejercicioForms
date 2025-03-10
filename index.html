@@ -10,7 +10,7 @@
 <body>
 
   <h2>Formulario de Registro</h2>
-  <form action="/registro" method="POST">
+  <form>
     
 <!-- Nombre 
     type="text": Define que el input es de tipo texto.
@@ -84,12 +84,16 @@
     <!-- País -->
     <label for="pais">País:</label>
     <select id="pais" name="pais" onchange="actualizarPrefijoTelefonico()" required>
-      <option value="">Selecciona un país</option>
-      <option value="EEUU">Estados Unidos</option>
-      <option value="Canada">Canadá</option>
-      <option value="Mexico">México</option>
-      <option value="España">España</option>
-      <option value="Colombia">Colombia</option>
+        <option value="">Selecciona un país</option>
+        <option value="EEUU">Estados Unidos</option>
+        <option value="Canada">Canadá</option>
+        <option value="Mexico">México</option>
+        <option value="Venezuela">Venezuela</option>
+        <option value="Espana">España</option>
+        <option value="Argentina">Argentina</option>
+        <option value="Colombia">Colombia</option>
+        <option value="Chile">Chile</option>
+        <option value="Peru">Perú</option>
     </select>
 
     <!-- Teléfono con prefijo dinámico -->

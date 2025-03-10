@@ -31,8 +31,17 @@ document.addEventListener("DOMContentLoaded", function () {
             case "Mexico":
                 prefijoInput.value = "+52";
                 break;
-            case "España":
+            case "Espana":
                 prefijoInput.value = "+34";
+                break;
+            case "Argentina":
+                prefijoInput.value = "+54";
+                break;
+            case "Colombia":
+            prefijoInput.value = "+57";
+                break;
+            case "Venezuela":
+            prefijoInput.value = "+58";
                 break;
             default:
                 prefijoInput.value = "";
