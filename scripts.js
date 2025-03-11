@@ -1,7 +1,3 @@
-// Se activa cuando todo el HTML ha sido completamente 
-// cargado y analizado por el navegador.
-// Se usa para asegurarse de que los elementos del 
-// DOM están disponibles antes de intentar manipularlos con JavaScript.
 document.addEventListener("DOMContentLoaded", function () {
     // Elementos del formulario
     let paisSelect = document.getElementById("pais");
@@ -9,13 +5,41 @@ document.addEventListener("DOMContentLoaded", function () {
     let telefonoInput = document.getElementById("telefono");
     let direccionDiv = document.getElementById("direccionDiv");
     let formulario = document.querySelector("form");
+    let emailInput = document.getElementById("email");
 
-    
+    // Expresión regular para validar dominios permitidos en correos
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|yahoo\.com|hotmail\.com|icloud\.com)$/;
+
+    // Aplicar estilos al hacer focus en inputs, selects y textarea
+    const inputs = document.querySelectorAll("input, select, textarea");
+
+    inputs.forEach(input => {
+        input.addEventListener("focus", function () {
+            this.style.border = "5px solid #005500"; // Borde azul al enfocar
+        });
+
+        input.addEventListener("blur", function () {
+            this.style.border = ""; // Restaura el borde original al perder el foco
+        });
+    });
+
+    // Validación de email con dominios específicos
+    emailInput.addEventListener("input", function () {
+        this.style.border = ""; // Restablecer borde si el usuario vuelve a escribir
+    });
+
+    emailInput.addEventListener("blur", function () {
+        if (!emailRegex.test(this.value) && this.value !== "") {
+            alert("Por favor, ingresa un correo con un dominio válido (gmail, outlook, yahoo, hotmail, icloud).");
+            this.style.border = "2px solid red"; // Resalta el input con rojo
+        }
+    });
+
     // Función para actualizar el prefijo telefónico según el país seleccionado
     function actualizarPrefijoTelefonico() {
         let pais = paisSelect.value;
 
-        //Mostrar y ocultar campo de dirección dependiendo del país
+        // Mostrar y ocultar campo de dirección dependiendo del país
         if (pais === "EEUU" || pais === "Canada") {
             direccionDiv.style.display = "block"; // Muestra el campo de dirección
         } else {
@@ -38,10 +62,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 prefijoInput.value = "+54";
                 break;
             case "Colombia":
-            prefijoInput.value = "+57";
+                prefijoInput.value = "+57";
                 break;
             case "Venezuela":
-            prefijoInput.value = "+58";
+                prefijoInput.value = "+58";
                 break;
             default:
                 prefijoInput.value = "";
@@ -49,48 +73,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Evento para cambiar el prefijo cuando se selecciona un país
-        // Se dispara cuando el usuario selecciona un país en el <select id="pais">.
-        // Llama a la función actualizarPrefijoTelefonico(), la cual:
-        // Cambia automáticamente el prefijo telefónico según el país seleccionado.
-        // Muestra u oculta el campo de dirección si el país es "EEUU" o "Canada
     paisSelect.addEventListener("change", actualizarPrefijoTelefonico);
 
     // Evento para validar el número de teléfono (solo números)
-        // Se activa cada vez que el usuario escribe algo en el campo de teléfono.
-        // Usa una expresión regular (\D) para eliminar cualquier carácter que 
-        // no sea un número.
-
-        //this hace referencia al elemento que ha disparado 
-        // el evento, en este caso, el telefonoInput.
-
-        //this.value accede al valor que el usuario 
-        // ha ingresado en ese campo de texto.
-
-        //\D es un patrón que coincide con cualquier 
-        // carácter que no sea un número
-
-        // Aquí estamos añadiendo un escuchador de eventos al elemento telefonoInput
-        // El evento "input" se dispara cada vez que el usuario escribe 
-        // o cambia algo dentro del campo de texto. 
-
-        // Esto evita que el usuario ingrese letras u otros símbolos.
     telefonoInput.addEventListener("input", function () {
-        this.value = this.value.replace(/\D/g, ""); // Elimina cualquier caracter que no sea número
+        this.value = this.value.replace(/\D/g, ""); // Elimina cualquier carácter que no sea número
     });
 
     // Evento que se ejecuta cuando el usuario envía el formulario
-        // Se dispara cuando el usuario presiona el botón "Registrarse" 
-        // para enviar el formulario.
-        // Compara las contraseñas ingresadas en los campos 
-        // "Contraseña" y "Confirmar contraseña".
-        // Si no coinciden, usa event.preventDefault(); 
-        // para cancelar el envío del formulario y muestra un mensaje de alerta.
-
-        // Este es el manejador de eventos. Cuando el evento 
-        // submit ocurre, la función anónima se ejecuta.
-        // El parámetro event contiene información sobre el evento submit.
-        //  En este caso, es el objeto que nos permite manejar 
-        // lo que sucede cuando el formulario se envía.
     formulario.addEventListener("submit", function (event) {
         let contrasena = document.getElementById("contraseña").value;
         let confirmarContrasena = document.getElementById("confirmar-contraseña").value;
@@ -102,5 +92,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-
