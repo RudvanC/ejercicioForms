@@ -57,7 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Evento para validar el número de teléfono (solo números)
         // Se activa cada vez que el usuario escribe algo en el campo de teléfono.
-        // Usa una expresión regular (\D) para eliminar cualquier carácter que no sea un número.
+        // Usa una expresión regular (\D) para eliminar cualquier carácter que 
+        // no sea un número.
         // Esto evita que el usuario ingrese letras u otros símbolos.
     telefonoInput.addEventListener("input", function () {
         this.value = this.value.replace(/\D/g, ""); // Elimina cualquier caracter que no sea número
