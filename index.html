@@ -71,7 +71,6 @@
     id="genero": Identifica el select de manera única.
     name="genero": Nombre del campo, que se envía con los datos del formulario.
     required: Hace que el campo sea obligatorio.-->
-
     <label for="genero">Género:</label>
     <select id="genero" name="genero" required>
       <option value="">Selecciona una opción</option>
@@ -96,7 +95,13 @@
         <option value="Peru">Perú</option>
     </select>
 
-    <!-- Teléfono con prefijo dinámico -->
+ <!-- Teléfono
+    type="tel": Define que el input es de tipo teléfono.
+    id="telefono": Identifica el input de manera única.
+    name="telefono": Nombre del campo, que se envía con los datos del formulario.
+    placeholder="Ej: 1234567890": Muestra un texto de ejemplo dentro del input.
+    pattern="[0-9]{10}": Valida que el valor sean exactamente 10 dígitos.
+    required: Hace que el campo sea obligatorio. -->
     <label for="telefono">Teléfono:</label>
     <div class="telefono-container">
       <input type="text" id="prefijo" name="prefijo" placeholder="Prefijo" readonly>
@@ -110,13 +115,7 @@
     </div>
 
    
-<!-- Teléfono
-    type="tel": Define que el input es de tipo teléfono.
-    id="telefono": Identifica el input de manera única.
-    name="telefono": Nombre del campo, que se envía con los datos del formulario.
-    placeholder="Ej: 1234567890": Muestra un texto de ejemplo dentro del input.
-    pattern="[0-9]{10}": Valida que el valor sean exactamente 10 dígitos.
-    required: Hace que el campo sea obligatorio. -->
+
     <label for="comentarios">Comentarios:</label>
     <textarea id="comentarios" name="comentarios" placeholder="Escribe tus comentarios aquí" rows="4"></textarea>
 

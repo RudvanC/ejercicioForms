@@ -59,6 +59,20 @@ document.addEventListener("DOMContentLoaded", function () {
         // Se activa cada vez que el usuario escribe algo en el campo de teléfono.
         // Usa una expresión regular (\D) para eliminar cualquier carácter que 
         // no sea un número.
+
+        //this hace referencia al elemento que ha disparado 
+        // el evento, en este caso, el telefonoInput.
+
+        //this.value accede al valor que el usuario 
+        // ha ingresado en ese campo de texto.
+
+        //\D es un patrón que coincide con cualquier 
+        // carácter que no sea un número
+
+        // Aquí estamos añadiendo un escuchador de eventos al elemento telefonoInput
+        // El evento "input" se dispara cada vez que el usuario escribe 
+        // o cambia algo dentro del campo de texto. 
+
         // Esto evita que el usuario ingrese letras u otros símbolos.
     telefonoInput.addEventListener("input", function () {
         this.value = this.value.replace(/\D/g, ""); // Elimina cualquier caracter que no sea número
@@ -71,6 +85,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // "Contraseña" y "Confirmar contraseña".
         // Si no coinciden, usa event.preventDefault(); 
         // para cancelar el envío del formulario y muestra un mensaje de alerta.
+
+        // Este es el manejador de eventos. Cuando el evento 
+        // submit ocurre, la función anónima se ejecuta.
+        // El parámetro event contiene información sobre el evento submit.
+        //  En este caso, es el objeto que nos permite manejar 
+        // lo que sucede cuando el formulario se envía.
     formulario.addEventListener("submit", function (event) {
         let contrasena = document.getElementById("contraseña").value;
         let confirmarContrasena = document.getElementById("confirmar-contraseña").value;
