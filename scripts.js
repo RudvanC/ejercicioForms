@@ -46,8 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
             default:
                 prefijoInput.value = "";
         }
-
-        // Mostrar u ocultar el campo de dirección
     }
 
     // Evento para cambiar el prefijo cuando se selecciona un país
@@ -83,3 +81,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
